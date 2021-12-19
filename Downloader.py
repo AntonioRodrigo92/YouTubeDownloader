@@ -1,5 +1,3 @@
-import time
-
 from moviepy.editor import *
 from pytube import YouTube
 
