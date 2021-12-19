@@ -1,3 +1,5 @@
+import time
+
 from moviepy.editor import *
 from pytube import YouTube
 
@@ -5,7 +7,9 @@ from pytube import YouTube
 def convert_files(input_dir, output_dir):
     for entry in os.scandir(input_dir.name):
         if (entry.path.endswith(".mp4")) and entry.is_file():
+            print("Converting")
             mp4_to_mp3(entry.path, output_dir)
+            print("Converting: Success")
 
 
 def download_music(links, output_dir):
@@ -32,7 +36,7 @@ def download_audio(link, output_dir):
 def mp4_to_mp3(input_audio_path, output_directory):
     input_audio = AudioFileClip(input_audio_path)
     output_name = get_output_file_name(input_audio.filename)
-    input_audio.write_audiofile(output_directory + "\\" + output_name)
+    input_audio.write_audiofile(output_directory + "\\" + output_name, verbose=False, logger=None)
     input_audio.close()
 
 
